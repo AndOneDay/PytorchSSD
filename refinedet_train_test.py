@@ -136,7 +136,7 @@ if not args.resume_net:
     net.odm_conf.apply(weights_init)
 else:
 # load resume network
-    resume_net_path = os.path.join(save_folder,args.version+'_'+args.dataset + '_epoches_'+ \
+    resume_net_path = os.path.join(save_folder, args.version+'_'+args.dataset + '_epoches_'+ \
                            str(args.resume_epoch) + '.pth')
     print('Loading resume network',resume_net_path)
     state_dict = torch.load(resume_net_path)
@@ -231,7 +231,7 @@ def train():
     else:
         start_iter = 0
 
-    log_file = open(log_file_path,'w')
+    #log_file = open(log_file_path,'w')
     batch_iterator = None
     mean_odm_loss_c = 0
     mean_odm_loss_l = 0
@@ -256,8 +256,9 @@ def train():
                              top_k, thresh=0.01)
                     APs = [str(num) for num in APs]
                     mAP = str(mAP)
-                    log_file.write(str(iteration)+' APs:\n'+'\n'.join(APs))
-                    log_file.write('mAP:\n'+mAP+'\n')
+                    with open(log_file_path, 'w+') as log_file:
+                        log_file.write(str(iteration)+' APs:\n'+'\n'.join(APs))
+                        log_file.write('\nmAP:\n'+mAP+'\n')
                 else:
                     test_net(test_save_dir, net, detector, args.cuda, testset,
                                        BaseTransform(net.module.size, rgb_means,rgb_std, (2, 0, 1)),
