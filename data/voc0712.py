@@ -247,26 +247,26 @@ class VOCDetection(data.Dataset):
 
         all_boxes[class][image] = [] or np.array of shape #dets x 5
         """
-        self._write_voc_results_file(all_boxes)
+        self._write_voc_results_file(all_boxes, output_dir)
         aps, map = self._do_python_eval(output_dir)
         return aps, map
 
-    def _get_voc_results_file_template(self):
+    def _get_voc_results_file_template(self, output_dir):
         filename = 'comp4_det_test' + '_{:s}.txt'
         filedir = os.path.join(
-            self.root, 'results', 'VOC' + self._year, 'Main')
+            output_dir, 'results', 'VOC' + self._year, 'Main')
         if not os.path.exists(filedir):
             os.makedirs(filedir)
         path = os.path.join(filedir, filename)
         return path
 
-    def _write_voc_results_file(self, all_boxes):
+    def _write_voc_results_file(self, all_boxes, output_dir):
         for cls_ind, cls in enumerate(VOC_CLASSES):
             cls_ind = cls_ind
             if cls == '__background__':
                 continue
             print('Writing {} VOC results file'.format(cls))
-            filename = self._get_voc_results_file_template().format(cls)
+            filename = self._get_voc_results_file_template(output_dir).format(cls)
             with open(filename, 'wt') as f:
                 for im_ind, index in enumerate(self.ids):
                     index = index[1]
