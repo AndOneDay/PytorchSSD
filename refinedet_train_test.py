@@ -317,11 +317,11 @@ def train():
                   repr(iteration) + ' || AL: %.4f AC: %.4f OL: %.4f OC: %.4f||' % (
                 mean_arm_loss_l/10,mean_arm_loss_c/10,mean_odm_loss_l/10,mean_odm_loss_c/10) +
                 'Batch time: %.4f sec. ||' % (load_t1 - load_t0) + 'LR: %.8f' % (lr))
-            log_file.write('Epoch:' + repr(epoch) + ' || epochiter: ' + repr(iteration % epoch_size) + '/' + repr(epoch_size)
-                  + '|| Total iter ' +
-                   repr(iteration) + ' || AL: %.4f AC: %.4f OL: %.4f OC: %.4f||' % (
-                   mean_arm_loss_l/10,mean_arm_loss_c/10,mean_odm_loss_l/10,mean_odm_loss_c/10) +
-                  'Batch time: %.4f sec. ||' % (load_t1 - load_t0) + 'LR: %.8f' % (lr)+'\n')
+            # log_file.write('Epoch:' + repr(epoch) + ' || epochiter: ' + repr(iteration % epoch_size) + '/' + repr(epoch_size)
+            #       + '|| Total iter ' +
+            #        repr(iteration) + ' || AL: %.4f AC: %.4f OL: %.4f OC: %.4f||' % (
+            #        mean_arm_loss_l / 10,mean_arm_loss_c / 10,mean_odm_loss_l / 10, mean_odm_loss_c / 10) +
+            #       'Batch time: %.4f sec. ||' % (load_t1 - load_t0) + 'LR: %.8f' % (lr)+'\n')
 
             mean_odm_loss_c = 0
             mean_odm_loss_l = 0
