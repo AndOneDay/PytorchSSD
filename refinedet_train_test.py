@@ -68,7 +68,7 @@ parser.add_argument('--date',default='0327')
 parser.add_argument('--save_frequency',default=10)
 parser.add_argument('--retest', default=False, type=bool,
                     help='test cache results')
-parser.add_argument('--test_frequency',default=10)
+parser.add_argument('--test_frequency',default=10, type=int)
 parser.add_argument('--visdom', default=False, type=str2bool, help='Use visdom to for loss visualization')
 parser.add_argument('--send_images_to_visdom', type=str2bool, default=False, help='Sample a random image from each 10th batch, send it to visdom after augmentations step')
 args = parser.parse_args()
