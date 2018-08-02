@@ -6,7 +6,7 @@ cv2.setNumThreads(0)  # pytorch issue 1355: possible deadlock in dataloader
 # note: if you used our download scripts, this should be right
 VOCroot = '/workspace/mnt/bucket/for_ava/VOCdevkit'  # path to VOCdevkit root dir
 COCOroot = '/workspace/mnt/bucket/for_ava/MSCOCO2017'
-
+Juggroot = '/workspace/mnt/group/blademaster/jianglielin/datasets/juggdet_train_test/juggdet_0503/'
 # RFB CONFIGS
 VOC_300 = {
     'feature_maps': [38, 19, 10, 5, 3, 1],
